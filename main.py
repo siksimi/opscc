@@ -102,7 +102,7 @@ for d, dataset in enumerate(datasets):
                         elif method =='elastic':
                             classifier = ElasticNetCV(alphas=alphas, l1_ratio=0.5, cv = num_CV, random_state=seed)
                         elif method == 'decisiontree':
-                            classifier == tree.DecisionTreeClassifier()
+                            classifier = tree.DecisionTreeClassifier()
                         elif method == 'randomforest':
                             classifier = RandomForestClassifier(max_depth=4, random_state=seed)
                         elif method == 'adaboost':
