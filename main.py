@@ -26,7 +26,7 @@ X_T2 = pd.read_csv("results/binWidth/T2_binWidth_32.csv")
 X_full = X_ADC.merge(X_T1, on='ID').merge(X_T2, on='ID').iloc[:, 1:] #full set
 y = pd.read_csv("answer/answerADC.csv").iloc[:,1 ]
 
-datasets = ['X_adc_T1_T2', 'X_adc_T1', 'X_adc_T2', 'X_adc', 'X_T1_T2']
+datasets = ['X_adc_T1_T2', 'X_T1', 'X_T2', 'X_adc_T1', 'X_adc_T2', 'X_adc', 'X_T1_T2']
 oversamples = ['original', 'ros', 'smote', 'adasyn', 'bsmote', 'svmsmote'] #'ksmote', 
 methods = ['linear', 'logistic', 'ridge', 'lasso', 'elastic', 'decisiontree', 'randomforest', 'adaboost', 'svm-linear', 'svm-poly', 'svm-rbf', 'fullyconnected']
 col_names = []
@@ -37,6 +37,12 @@ for d, dataset in enumerate(datasets):
     print ("[ {} / {} ]".format(d, len(datasets)), "with dataset : ", dataset, )
     if dataset == 'X_adc_T1_T2':
         X = X_full
+    elif dataset == 'X_T1':
+        X = X_full.iloc[:, :107]
+        X_test = X_full.iloc[:, :107]
+    elif dataset == 'X_T2':
+        X = X_full.iloc[:,107:214]
+        X_test = X_full.iloc[:,107:214]
     elif dataset == 'X_adc_T1':
         X = X_full.iloc[:, :214]
     elif dataset == 'X_adc_T2':
