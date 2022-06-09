@@ -13,11 +13,10 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 warnings.filterwarnings(action='ignore')
 
-SEED = 2022 #random seed #
+SEED = 2022
 num_CV = 5  # number of crossvalidation #
 n_splits = 5
-repeat = 1
-test_size = 0.3 # test set ratio #
+repeat = 100
 max_iter = 100000 # max iteration for SVM #
 alphas = np.logspace(-4, 4, 17)
 
@@ -31,8 +30,8 @@ y_train = training_df.iloc[:, 1 ]
 X_test_full = test_df.iloc[:, 5:]
 y_test = test_df.iloc[:, 1 ]
 
-datasets = ['X_adc']#['X_adc_T1_T2', 'X_T1', 'X_T2', 'X_adc_T1', 'X_adc_T2', 'X_adc', 'X_T1_T2']
-oversamples = ['original', 'ros', 'smote', 'adasyn', 'bsmote', 'svmsmote'] #'ksmote', 
+datasets = ['X_adc_T1_T2', 'X_T1', 'X_T2', 'X_adc_T1', 'X_adc_T2', 'X_adc', 'X_T1_T2']
+oversamples = ['original', 'ros', 'smote', 'adasyn', 'bsmote', 'svmsmote'] 
 methods = ['linear', 'logistic', 'ridge', 'lasso', 'elastic', 'decisiontree', 'randomforest', 'adaboost', 'svm-linear', 'svm-poly', 'svm-rbf', 'fullyconnected']
 col_names = []
 for o in oversamples:
