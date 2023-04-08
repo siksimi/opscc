@@ -125,25 +125,25 @@ for d, dataset in enumerate(datasets):                       ## Use one of the f
             X_test = X_test_full.iloc[:, :214]
                                                             ## Use one of the following feature selection filters.
         if feature_selection == 'full':                             # None (Use of full features)
-            X, X_test = X_train, X_test
+            X_train, X_test = X_train, X_test
         elif feature_selection == 'corr_0.4':                       # high correlation filter with the highest allowable correlation of 0.4
-            X, X_test = corr_filter(X_train, X_test, 0.4)
+            X_train, X_test = corr_filter(X_train, X_test, 0.4)
         elif feature_selection == 'corr_0.6':                       # high correlation filter with the highest allowable correlation of 0.6
-            X, X_test = corr_filter(X_train, X_test, 0.6)
+            X_train, X_test = corr_filter(X_train, X_test, 0.6)
         elif feature_selection == 'corr_0.8':                       # high correlation filter with the highest allowable correlation of 0.8
-            X, X_test = corr_filter(X_train, X_test, 0.8)
+            X_train, X_test = corr_filter(X_train, X_test, 0.8)
         elif feature_selection == 'kbest_10':                       # K-best selection filter using ANOVA-F statistics (K = 10)
-            X, X_test = kbest(X_train, y_train, X_test, 10)
+            X_train, X_test = kbest(X_train, y_train, X_test, 10)
         elif feature_selection == 'kbest_20':                       # K-best selection filter using ANOVA-F statistics (K = 20)
-            X, X_test = kbest(X_train, y_train, X_test, 20)                        
+            X_train, X_test = kbest(X_train, y_train, X_test, 20)                        
         elif feature_selection == 'kbest_30':                       # K-best selection filter using ANOVA-F statistics (K = 30)
-            X, X_test = kbest(X_train, y_train, X_test, 30)                        
+            X_train, X_test = kbest(X_train, y_train, X_test, 30)                        
         elif feature_selection == 'pca_5':                          # principal component analysis (PCA) (number of dimensions = 5)
-            X, X_test = pca (X_train, y_train, X_test, 5)
+            X_train, X_test = pca (X_train, y_train, X_test, 5)
         elif feature_selection == 'pca_10':                         # principal component analysis (PCA) (number of dimensions = 10)
-            X, X_test = pca (X_train, y_train, X_test, 10)
+            X_train, X_test = pca (X_train, y_train, X_test, 10)
         elif feature_selection == 'pca_15':                         # principal component analysis (PCA) (number of dimensions = 15)
-            X, X_test = pca (X_train, y_train, X_test, 15)        
+            X_train, X_test = pca (X_train, y_train, X_test, 15)        
             
         print ("[ {} / {} ]".format(d, len(datasets)), "with dataset : {} / feature selection {}".format(dataset,feature_selection))                                          
         
